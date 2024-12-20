@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 export default async function Home() {
   const featuredProducts = await productService.getFeatured()
   const latestProducts = await productService.getLatest()
+  const allproducts= await productService.getAll()
   return (
     <>
       <div className="w-full carousel rounded-box mt-4">
@@ -59,7 +60,7 @@ export default async function Home() {
 
       <h2 className="text-2xl py-2">Latest Products</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {latestProducts.map((product) => (
+        {allproducts.map((product) => (
           <ProductItem key={product.slug} product={convertDocToObj(product)} />
         ))}
       </div>
